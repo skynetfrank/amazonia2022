@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/amazona').then(() => {
+mongoose.connect(process.env.MONGODB_URL).then(() => {
   console.log('conectado a mongodb');
 });
 app.use('/api/uploads', uploadRouter);
