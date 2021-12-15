@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
-const ENDPOINT =
-  window.location.host.indexOf('localhost') >= 0
-    ? 'http://127.0.0.1:5000'
-    : window.location.host;
+const ENDPOINT = window.location.host.indexOf('localhost') >= 0 ? 'http://127.0.0.1:5000' : window.location.host;
 
 export default function ChatBox(props) {
   const { userInfo } = props;
@@ -12,9 +9,7 @@ export default function ChatBox(props) {
   const uiMessagesRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [messageBody, setMessageBody] = useState('');
-  const [messages, setMessages] = useState([
-    { name: 'Admin', body: 'Hello there, Please ask your question.' },
-  ]);
+  const [messages, setMessages] = useState([{ name: 'Admin', body: 'Hello there, Please ask your question.' }]);
 
   useEffect(() => {
     if (uiMessagesRef.current) {
@@ -30,7 +25,7 @@ export default function ChatBox(props) {
         name: userInfo.name,
         isAdmin: userInfo.isAdmin,
       });
-      socket.on('message', (data) => {
+      socket.on('message', data => {
         setMessages([...messages, { body: data.body, name: data.name }]);
       });
     }
@@ -42,7 +37,7 @@ export default function ChatBox(props) {
     const sk = socketIOClient(ENDPOINT);
     setSocket(sk);
   };
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
     if (!messageBody.trim()) {
       alert('Error. Please type message.');
@@ -61,6 +56,7 @@ export default function ChatBox(props) {
   };
   const closeHandler = () => {
     setIsOpen(false);
+    console.log('setIsOpen=false bro!');
   };
   return (
     <div className="chatbox">
@@ -87,7 +83,7 @@ export default function ChatBox(props) {
             <form onSubmit={submitHandler} className="row">
               <input
                 value={messageBody}
-                onChange={(e) => setMessageBody(e.target.value)}
+                onChange={e => setMessageBody(e.target.value)}
                 type="text"
                 placeholder="type message"
               />
