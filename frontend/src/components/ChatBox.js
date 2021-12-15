@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
-const ENDPOINT = window.location.host.indexOf('localhost') >= 0 ? 'http://127.0.0.1:5000' : window.location.host;
+const ENDPOINT = 'https://amazonia22-4m05aenv1-skynetfrank.vercel.app/';
+
+//window.location.host.indexOf('localhost') >= 0 ? 'http://127.0.0.1:5000' : window.location.host;
 
 export default function ChatBox(props) {
   const { userInfo } = props;
