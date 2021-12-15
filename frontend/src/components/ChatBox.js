@@ -33,7 +33,7 @@ export default function ChatBox(props) {
 
   const supportHandler = () => {
     setIsOpen(true);
-    console.log(ENDPOINT);
+    console.log('algo sobre endpoint' + ENDPOINT);
     const sk = socketIOClient(ENDPOINT);
     setSocket(sk);
   };
