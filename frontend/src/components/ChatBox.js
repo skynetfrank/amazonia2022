@@ -15,6 +15,7 @@ export default function ChatBox(props) {
 
   useEffect(() => {
     if (uiMessagesRef.current) {
+      console.log('scrolling yo!');
       uiMessagesRef.current.scrollBy({
         top: uiMessagesRef.current.clientHeight,
         left: 0,
